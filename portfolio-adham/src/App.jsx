@@ -42,7 +42,7 @@ function App() {
       left: '35%',
       width: '500px',
       height: '500px',
-      link: 'http://localhost:3000/'
+    link: 'https://test1-madvs.vercel.app/'
     },
     {
       id: 2,
