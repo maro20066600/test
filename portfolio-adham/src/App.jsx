@@ -42,7 +42,7 @@ function App() {
       left: '35%',
       width: '500px',
       height: '500px',
-    link: 'https://test1-madvs.vercel.app/'
+    link: 'test1-orcin-gamma.vercel.app'
     },
     {
       id: 2,
