@@ -23,6 +23,17 @@ function App() {
     return () => clearInterval(interval)
   }, [])
 
+  useEffect(() => {
+    const scaleSite = () => {
+      const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080)
+      document.documentElement.style.setProperty('--scale', scale.toString())
+    }
+
+    scaleSite()
+    window.addEventListener('resize', scaleSite)
+    return () => window.removeEventListener('resize', scaleSite)
+  }, [])
+
   const handleCameraClick = () => {
     // Camera flash sound
     const audio = new Audio('/assets/sound/camera-flash-204151.mp3')
@@ -38,45 +49,46 @@ function App() {
     {
       id: 1,
       image: '/assets/frames/1.png',
-      top: '-6%',
-      left: '35%',
-      width: '500px',
-      height: '500px',
+      top: '-3%',
+      left: '36%',
+      width: '600px',
+      height: '600px',
     link: 'https://test1-orcin-gamma.vercel.app'
     },
     {
       id: 2,
       image: '/assets/frames/2.png',
-      top: '-1%',
-      left: '23%',
-      width: '350px',
+      top: '6%',
+      left: '25%',
+      width: '400px',
       height: '500px',
       link: 'https://www.facebook.com/tajallymediaproduction/'
     },
     {
       id: 3,
       image: '/assets/frames/3.png',
-      top: '1%',
-      right: '17%',
-      width: '450px',
-      height: '450px',
+      top: '6%',
+      right: '19%',
+      width: '500px',
+      height: '500px',
       link: 'https://www.facebook.com/Mo7nkeen/'
     }
   ]
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
-      {/* Background */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
-        style={{ backgroundImage: `url(/assets/frames/${background})` }}
-      />
+    <div className="wrapper">
+      <div className="relative w-full h-full overflow-hidden">
+        {/* Background */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
+          style={{ backgroundImage: `url(/assets/frames/${background})` }}
+        />
 
-      {/* Background Toggle Button */}
-      <button
-        onClick={() => setBackground(bg => bg === 'bg.png' ? 'bg2.png' : 'bg.png')}
-        className="absolute top-6 right-6 z-20 p-4 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-        title={background === 'bg.png' ? 'Warm' : 'Cold'}
+        {/* Background Toggle Button */}
+        <button
+          onClick={() => setBackground(bg => bg === 'bg.png' ? 'bg2.png' : 'bg.png')}
+          className="absolute top-6 right-6 z-20 p-4 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+          title={background === 'bg.png' ? 'Warm' : 'Cold'}
       >
         {background === 'bg.png' ? (
           <Sun className="w-8 h-8 text-orange-400" />
@@ -231,6 +243,7 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>
     </div>
   )
 }
