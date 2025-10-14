@@ -94,3 +94,11 @@ body::after {
   overflow: hidden;
   z-index: 1;
 }
+
+.wrapper {
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
