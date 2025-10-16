@@ -25,7 +25,12 @@ function App() {
 
   useEffect(() => {
     const scaleSite = () => {
-      const scale = Math.max(window.innerWidth / 1920, window.innerHeight / 1080)
+      const widthRatio = window.innerWidth / 1920
+      const heightRatio = window.innerHeight / 1080
+      const isMobile = window.innerWidth <= 1024
+      const scale = isMobile
+        ? Math.min(widthRatio, heightRatio)
+        : Math.max(widthRatio, heightRatio)
       document.documentElement.style.setProperty('--scale', scale.toString())
     }
 
